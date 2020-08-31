@@ -51,8 +51,7 @@ After the installation is successful, the main program command ``Tree2gd`` and t
 You can first check whether Tree2gd is installed successfully by running the following command::
     $ Tree2gd -h
 If the system feeds back its corresponding parameter description, congratulations on the correct installation of Tree2gd to your system!
-
-Next, we strongly recommend that you run b to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
+Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
     - Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration)
     - When using for the first time, in the final drawing part, we will install several dependent packages in R. After installation, the formal use will be faster and more convenient
-    - After the user modifies the configuration file, he can add his own new settings through the -config parameter of the command to test, and quickly detect that the new configuration can run successfully
+    - After the user modifies the configuration file, he can add his own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully
