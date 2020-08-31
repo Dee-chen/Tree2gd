@@ -33,13 +33,13 @@ from https://www.r-project.org
 
 Installation
 ===================
-- Installation From Pypi
-Y
-ou can quickly install Tree2gd through the following command, and automatically install the python packages it depends on::
+- Installation From Pypi  
+
+You can quickly install Tree2gd through the following command, and automatically install the python packages it depends on::
     pip3 install Tree2gd [--user] #You may need the --user parameter if you do not have administrator rights
 If you need to use a specific python3 path to install and use Tree2gd, you can replace the above ``pip3`` with ``/THE/PATH/OF/YOUR/PYTHON3 -m pip``
 
-- Installation From Source
+- Installation From Source  
 You can download and decompress our source code, or fetch it using git.
 Now change directory to the Tree2gd source code folder and run::
     python3 setup.py build
@@ -52,15 +52,16 @@ Testing
 ===================
 After the installation is successful, the main program command ``Tree2gd`` and test command ``Tree2gd_test`` will be added to your system.
 You can first check whether Tree2gd is installed successfully by running the following command::
-    $ Tree2gd -h
+   $ Tree2gd -h
 If the system feeds back its corresponding parameter description, congratulations on the correct installation of Tree2gd to your system!
-Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
+Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits
 - Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).
 - When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.
 - After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
 
-The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings. It only contains two optional parameters command::
-    $ Tree2gd_test [-t] [-config]
+The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings.
+It only contains two optional parameters command::
+   $ Tree2gd_test [-t] [-config]
       -t [int] sets the number of threads for testing (default: 1)
       -config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
 In the case of 4 cpus, it takes about 5 minutes to complete a round of testing (the first run will take some extra time to download and install the R package). After successful operation,
