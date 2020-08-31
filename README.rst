@@ -95,3 +95,13 @@ In addition, you can add the following optional parameters to make the program r
                        required)
   --only_script        Only generate scripts, not run automatically.
   --cds2tree           Use cds sequence to construct gene tree.
+
+
+Detailed parameter configuration file : config.ini 
+===================
+There are many softwares in the Tree2gd process. The pre-compiled versions of the programs are already used by default. At the same time, these softwares have many parameters that can be adjusted to achieve the best results.  
+
+So we used the config.ini file to summarize these settings, input it to the program through the ``-config`` parameter, and call the configuration in the corresponding program.  
+
+**! note! Any item in this file is optional, users only need to add the lines they need in the corresponding section**
+
