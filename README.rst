@@ -54,13 +54,13 @@ You can first check whether Tree2gd is installed successfully by running the fol
     $ Tree2gd -h
 If the system feeds back its corresponding parameter description, congratulations on the correct installation of Tree2gd to your system!
 Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
-    - Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).
-    - When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.
-    - After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
+  - Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).
+  - When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.
+  - After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
 The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings. It only contains two optional parameters command::
     $ Tree2gd_test [-t] [-config]
-        -t [int] sets the number of threads for testing (default: 1)
-        -config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
+      -t [int] sets the number of threads for testing (default: 1)
+      -config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
 In the case of 4 cpus, it takes about 5 minutes to complete a round of testing (the first run will take some extra time to download and install the R package). After successful operation,
 it will generate a folder in the current directory``./Tree2gd_test_out``, You can check it (especially the final drawing result ``Tree2GD.result.pdf`` in step6) to fully verify the running effect of the software.
 
@@ -78,8 +78,6 @@ In addition, you can add the following optional parameters to make the program r
 -step STEP         which step you needs.
 -log LOG           log file name, or log will print on stdout.
 -config CONFIG     config.ini configuration file, leave it blank to run with default parameters and the program's own software version.
--debug             The log file will contain the output of each software
-                   itself, which is convenient for finding errors (-log is
-                   required).
+-debug             The log file will contain the output of each software itself, which is convenient for finding errors (-log is required).
 -only_script       Only generate scripts, not run automatically.
 -cds2tree          Use cds sequence to construct gene tree.
