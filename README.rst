@@ -17,7 +17,7 @@ implementations:
 - Python 3.6, 3.7, 3.8 -- see http://www.python.org
 
 - Pip3.6>=v19.2.3 -- see https://pypi.org/project/pip/
-Installing by `sudo apt-get install python3-pip` or with get-pip.py using::
+Installing by ``sudo apt-get install python3-pip`` or with get-pip.py using::
 
    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
    python3 get-pip.py
@@ -29,11 +29,11 @@ from https://www.r-project.org
 
 Installation
 ===================
-*Installation From Pypi
+-Installation From Pypi
 You can quickly install Tree2gd through the following command, and automatically install the python packages it depends on::
     pip3 install Tree2gd [--user] #You may need the --user parameter if you do not have administrator rights
-If you need to use a specific python3 path to install and use Tree2gd, you can replace the above `pip3` with `/THE/PATH/OF/YOUR/PYTHON3 -m pip`
-*Installation From Source
+If you need to use a specific python3 path to install and use Tree2gd, you can replace the above ``pip3`` with ``/THE/PATH/OF/YOUR/PYTHON3 -m pip``
+-Installation From Source
 You can download and decompress our source code, or fetch it using git.
 Now change directory to the Tree2gd source code folder and run::
     python3 setup.py build
