@@ -1,0 +1,13 @@
+
+<2020-8-18>
+-The need for species list files is cancelled, the species list can be obtained directly from the species tree.nwk
+-Optimized drawing script
+-Organize and add sample data sets
+-Optimize the software packaging structure, automatically include the required software and call it by default
+<2020-8-24>
+-Modify part of the source code of ParaAT.pl calculated by kaks, and adjust the settings of this step at the same time, so that it can support the four software "clustalw2", "t_coffee", "mafft", "muscle" for comparison, the default mafft
+-Enriched the setting options of iqtree and tree2gd, can set the bootstrap value and the tree model
+<2020-8-26>
+-Can choose to use cds sequence for gene tree construction
+-Optimized the result of html drawing
+-Optimized the error handling of the program
