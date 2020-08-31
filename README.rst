@@ -104,4 +104,35 @@ There are many softwares in the Tree2gd process. The pre-compiled versions of th
 So we used the config.ini file to summarize these settings, input it to the program through the ``-config`` parameter, and call the configuration in the corresponding program.  
 
 **! note! Any item in this file is optional, users only need to add the lines they need in the corresponding section**
-
+::
+   [software]  #The path of all software used by Tree2gd.If one is not set or set to empty,the program will use its own pre-compiled software version (location at /THE/PATH/OF/python/site-packages/software/)
+   diamond =/THE/PATH/OF/python/site-packages/software/diamond
+   muscle=/THE/PATH/OF/python/site-packages/software/muscle
+   iqtree=/THE/PATH/OF/python/site-packages/software/iqtree
+   tree2gd=/THE/PATH/OF/python/site-packages/software/Tree2GD
+   phymcl=/THE/PATH/OF/python/site-packages/software/PhyloMCL
+   ParaAT=/THE/PATH/OF/python/site-packages/software/ParaAT.pl
+   KaKs_Calculator=/THE/PATH/OF/python/site-packages/software/KaKs_Calculator
+   calculate_4DTV=/THE/PATH/OF/python/site-packages/software/calculate_4DTV_correction.pl
+   Epal2nal=/THE/PATH/OF/python/site-packages/software/Epal2nal.pl
+   dolloparsimony=/THE/PATH/OF/python/site-packages/software/dolloparsimony
+   ParaAT_aligncmd=/THE/PATH/OF/python/site-packages/software/muscle
+   [postfix]
+   pep=.pep
+   cds=.cds
+   [diamond]
+   -e=1e-10
+   -p=4
+   [phymcl]
+   [mcl2fasta]
+   min_taxa=4
+   [ParaAT]
+   -mod=YN
+   -m=mafft
+   -g=
+   -t=
+   [iqtree]
+   -bb=1000
+   -m=JTT+G4
+   [tree2gd]
+   --bp=50
