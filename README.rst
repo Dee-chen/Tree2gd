@@ -73,7 +73,8 @@ it will generate a folder in the current directory``./Tree2gd_test_out``, You ca
 
 Running
 ===================
-You can complete all WGD analysis only with the simplest commands below and get a perfect drawing display:
+You can complete all WGD analysis only with the simplest commands below 
+and get a perfect drawing display::
     $ Tree2gd -i input_dir -tree phytree.nwk
 Among them, ``phytree.nwk`` is the species evolution tree in newick format.
 
