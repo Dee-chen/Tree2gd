@@ -17,7 +17,7 @@ implementations:
 
 - Python 3.6, 3.7, 3.8 -- see http://www.python.org  
 
-- PyPy3.6>=v19.2.3 -- see https://pypi.org/project/pip/  
+- Pip3.6>=v19.2.3 -- see https://pypi.org/project/pip/  
 Installing with get-pip.py using::  
 
    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
