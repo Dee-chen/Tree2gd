@@ -1,9 +1,7 @@
 .. image:: https://img.shields.io/pypi/v/Tree2gd.svg
    :alt: Tree2gd on the Python Package Index (PyPI)
    :target: https://pypi.python.org/pypi/Tree2gd
-.. image:: https://img.shields.io/codecov/c/github/Tree2gd/Tree2gd/master.svg
-   :alt: TravisCI test coverage
-   :target: https://codecov.io/github/Tree2gd/Tree2gd/
+
 
 Tree2gd README file
 =====================
@@ -15,8 +13,8 @@ Python Requirements
 We currently recommend using Python 3.8 from http://www.python.org
 Tree2GD is currently supported and tested on the following Python
 implementations:
-- Python 3.6, 3.7, 3.8 -- see http://www.python.org
-- PyPy3.6>=v19.2.3 -- see https://pypi.org/project/pip/
-Installing with get-pip.py using::
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-  python get-pip.py
+   - Python 3.6, 3.7, 3.8 -- see http://www.python.org
+   - PyPy3.6>=v19.2.3 -- see https://pypi.org/project/pip/
+      Installing with get-pip.py using::
+       curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+       python get-pip.py
