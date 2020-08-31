@@ -36,14 +36,14 @@ def main():
     parser = argparse.ArgumentParser(description='Tree2GD:A pipeline for WGD')
     parser.add_argument('-i', type=str, required=True, metavar='input_dir',help='The CDS and pep dir.')
     parser.add_argument('-tree', type=str, required=True, metavar='phytree.nwk',help='The phytree file.')
-    parser.add_argument('-t', type=int, default='1', help='Thread num.default:1')
-    parser.add_argument('-o', type=str, default=os.sep.join([pwd,'output']),help='The output dir.default:'+os.sep.join([pwd,'output']))
-    parser.add_argument('-step', type=str, default='123456', help='which step you needs')
-    parser.add_argument('-log', type=str, help='log file name,or log will print on stdout')
-    parser.add_argument('-config', type=str, help='config.ini configuration file, leave it blank to run with default parameters and the program\'s own software version.')
-    parser.add_argument('-debug', action='store_true', default=False, help='The log file will contain the output of each software itself, which is convenient for finding errors (-log is required)')
-    parser.add_argument('-only_script', action='store_true', default=False,help='Only generate scripts, not run automatically.')
-    parser.add_argument('-cds2tree', action='store_true', default=False,help='Use cds sequence to construct gene tree.')
+    parser.add_argument('-t', type=int,metavar='t',default='1', help='Thread num.default:1')
+    parser.add_argument('-o', type=str,metavar='outputdir',default=os.sep.join([pwd,'output']),help='The output dir.default:'+os.sep.join([pwd,'output']))
+    parser.add_argument('--step', type=str,metavar='123456',default='123456', help='Which steps you need.default:123456(Choose from numbers: such as \'234\')')
+    parser.add_argument('--log', type=str, metavar='logfile',help='log file name,or log will print on stdout')
+    parser.add_argument('--config', type=str,metavar='config.ini', help='config.ini configuration file, leave it blank to run with default parameters and the program\'s own software version.')
+    parser.add_argument('--debug', action='store_true', default=False, help='The log file will contain the output of each software itself, which is convenient for finding errors (-log is required)')
+    parser.add_argument('--only_script', action='store_true', default=False,help='Only generate scripts, not run automatically.')
+    parser.add_argument('--cds2tree', action='store_true', default=False,help='Use cds sequence to construct gene tree.')
     args = parser.parse_args()
 
     if not args.log:
@@ -296,7 +296,7 @@ def test():
     parser.add_argument('-t', type=int, default='1', help='Thread num.default:1')
     parser.add_argument('-config',default=os.sep.join([home_dir,"example_data","config.ini"]),type=str, help='config.ini configuration file, leave it blank to run with default parameters and the program\'s own software version.')
     args = parser.parse_args()
-    subprocess.run("Tree2gd -i "+os.sep.join([home_dir,"example_data"])+" -tree "+os.sep.join([home_dir,"example_data","example.tree"])+" -config "+args.config+" -o ./Tree2gd_test_out -t "+str(args.t),shell=True)
+    subprocess.run("Tree2gd -i "+os.sep.join([home_dir,"example_data"])+" -tree "+os.sep.join([home_dir,"example_data","example.tree"])+" --config "+args.config+" -o ./Tree2gd_test_out -t "+str(args.t),shell=True)
 
 if __name__ == '__main__':
     main()
