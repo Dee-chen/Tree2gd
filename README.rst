@@ -75,7 +75,7 @@ The ``input_dir`` folder contains all the corresponding protein sequences (defau
 In addition, you can add the following optional parameters to make the program run faster and better (especially when using multi-core operation)::
   -t T               Thread num.default:1
   -o O               The output dir.default:./output
-  -step STEP         which step you needs
+  -step STEP               which step you needs
   -log LOG           log file name,or log will print on stdout
   -config CONFIG     config.ini configuration file, leave it blank to run with default parameters and the program's own software version.
   -debug       The log file will contain the output of each software itself, which is convenient for finding errors (-log is required)
