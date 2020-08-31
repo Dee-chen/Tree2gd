@@ -8,6 +8,9 @@ Tree2gd
 Tree2GD provides an integrated pipeline to identify WGD events, with friendful commands in one-step or multiple steps, with smart quality control in custom dataset, with multithreading design costing low time, with well performance in detect WGD signals, and with advanced visualization of GDs and Ks peaks.
 
 
+The Biopython Project is an international association of developers of freely
+available Python tools for computational molecular biology.
+
 Python Requirements
 ===================
 We currently recommend using Python 3.8 from http://www.python.org
