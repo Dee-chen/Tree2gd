@@ -294,7 +294,7 @@ def test():
     home_dir=os.path.dirname(os.path.abspath(__file__))
     parser = argparse.ArgumentParser(description='test cmd for Tree2GD')
     parser.add_argument('-t', type=int, default='1', help='Thread num.default:1')
-    parser.add_argument('-config',default=os.sep.join([home_dir,"example_data","config.ini"]),type=str, help='config.ini configuration file, leave it blank to run with default parameters and the program\'s own software version.')
+    parser.add_argument('--config',default=os.sep.join([home_dir,"example_data","config.ini"]),type=str, help='config.ini configuration file, leave it blank to run with default parameters and the program\'s own software version.')
     args = parser.parse_args()
     subprocess.run("Tree2gd -i "+os.sep.join([home_dir,"example_data"])+" -tree "+os.sep.join([home_dir,"example_data","example.tree"])+" --config "+args.config+" -o ./Tree2gd_test_out -t "+str(args.t),shell=True)
 
