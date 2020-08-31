@@ -116,23 +116,23 @@ So we used the config.ini file to summarize these settings, input it to the prog
    calculate_4DTV=/THE/PATH/OF/python/site-packages/software/calculate_4DTV_correction.pl
    Epal2nal=/THE/PATH/OF/python/site-packages/software/Epal2nal.pl
    dolloparsimony=/THE/PATH/OF/python/site-packages/software/dolloparsimony
-   ParaAT_aligncmd=/THE/PATH/OF/python/site-packages/software/muscle
-   [postfix]
+   ParaAT_aligncmd=/THE/PATH/OF/python/site-packages/software/muscle #The software path used to compare gene pairs when calculating kaks, please provide the correct software path corresponding to [ParaAT] -m
+   [postfix]#The file name postfix of each species protein and cds, the prefix must be exactly the same as in the tree file
    pep=.pep
    cds=.cds
-   [diamond]
+   [diamond]#The parameters used by diamond, in addition to the following default parameters, the user can add any parameter that diamond can recognize
    -e=1e-10
-   -p=4
-   [phymcl]
+   -p=4  #The number of threads used by each diamond, the number of parallel diamonds in actual operation is Tree2gd thread//it
+   [phymcl]#The parameters used by phymcl, the user can add any parameter that phymcl can recognize
    [mcl2fasta]
-   min_taxa=4
-   [ParaAT]
+   min_taxa=4 #The minimum number of species contained in each gene set when doing paper mulberry, cannot be less than 4, otherwise a meaningful tree cannot be built
+   [ParaAT]#The parameters used by ParaAT.pl, in addition to the following default parameters, the user can add any parameter that ParaAT.pl can recognize
    -mod=YN
-   -m=mafft
-   -g=
-   -t=
-   [iqtree]
-   -bb=1000
-   -m=JTT+G4
-   [tree2gd]
+   -m=muscle #After the comparison software is selected this time, the corresponding software path should be given at x, if it does not match, an error will occur
+   -g= #Remove aligned codons with gaps
+   -t= #Remove mismatched codons
+   [iqtree]#The parameters used by iqtree, in addition to the following default parameters, the user can add any parameter that iqtree can recognize
+   -bb=1000 #Ultrafast bootstrap (>=1000) If you don’t set it default to 1000, you can force it to 0 so that bootstrap is not performed, but it is not recommended except for testing
+   -m=JTT+G4 #If the -cds2tree parameter is added, it will default to HKY. Please specify DNA or Protein when defining the tree structure model
+   [tree2gd]#The parameters used by tree2gd, in addition to the following default parameters, the user can add any parameter that tree2gd can recognize
    --bp=50
