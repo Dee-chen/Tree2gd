@@ -33,13 +33,15 @@ from https://www.r-project.org
 
 Installation
 ===================
-- Installation From Pypi  
-
-You can quickly install Tree2gd through the following command, and automatically install the python packages it depends on::
-    pip3 install Tree2gd [--user] #You may need the --user parameter if you do not have administrator rights
+Installation From Pypi
+-------------------
+You can quickly install Tree2gd through the following command, 
+and automatically install the python packages it depends on by run::
+    pip3 install Tree2gd [--user]  #You may need the --user parameter if you do not have administrator rights
 If you need to use a specific python3 path to install and use Tree2gd, you can replace the above ``pip3`` with ``/THE/PATH/OF/YOUR/PYTHON3 -m pip``
 
-- Installation From Source  
+Installation From Source
+-------------------
 You can download and decompress our source code, or fetch it using git.
 Now change directory to the Tree2gd source code folder and run::
     python3 setup.py build
@@ -54,10 +56,12 @@ After the installation is successful, the main program command ``Tree2gd`` and t
 You can first check whether Tree2gd is installed successfully by running the following command::
    $ Tree2gd -h
 If the system feeds back its corresponding parameter description, congratulations on the correct installation of Tree2gd to your system!
-Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits
-- Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).
-- When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.
-- After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
+Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
+   1.Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).  
+   
+   2.When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.  
+   
+   3.After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
 
 The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings.
 It only contains two optional parameters command::
@@ -78,6 +82,7 @@ The ``input_dir`` folder contains all the corresponding protein sequences (defau
 In addition, you can add the following optional parameters to make the program run faster and better (especially when using multi-core operation)::
   -t T               Thread num.default:1.
   -o O               The output dir.default:output.
+  -s O               The output dir.default:output.
   -step STEP         which step you needs.
   -log LOG           log file name, or log will print on stdout.
   -config CONFIG     config.ini configuration file, leave it blank to run with default parameters and the program's own software version.
