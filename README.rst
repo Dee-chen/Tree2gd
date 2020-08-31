@@ -12,7 +12,6 @@ Python Requirements
 ===================
 We currently recommend using Python 3.8 from http://www.python.org  
 Tree2GD is currently supported and tested on the following Python  
-
 implementations:  
 - Python 3.6, 3.7, 3.8 -- see http://www.python.org  
 - PyPy3.6>=v19.2.3 -- see https://pypi.org/project/pip/  
