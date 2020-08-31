@@ -65,9 +65,9 @@ Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we
 
 The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings.
 It only contains two optional parameters command::
-   $ Tree2gd_test [-t] [-config]
+   $ Tree2gd_test [-t] [--config]
       -t [int] sets the number of threads for testing (default: 1)
-      -config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
+      --config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
 In the case of 4 cpus, it takes about 5 minutes to complete a round of testing (the first run will take some extra time to download and install the R package). After successful operation,
 it will generate a folder in the current directory``./Tree2gd_test_out``, You can check it (especially the final drawing result ``Tree2GD.result.pdf`` in step6) to fully verify the running effect of the software.
 
