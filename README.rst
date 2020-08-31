@@ -9,7 +9,7 @@ Tree2gd
 =====================
 Tree2GD provides an integrated pipeline to identify WGD events, with friendful commands in one-step or multiple steps,
 with smart quality control in custom dataset, with multithreading design costing low time, with well performance in detect WGD signals,
- and with advanced visualization of GDs and Ks peaks.
+and with advanced visualization of GDs and Ks peaks.
 
 
 Python Requirements
@@ -73,15 +73,13 @@ Among them, ``phytree.nwk`` is the species evolution tree in newick format.
 The ``input_dir`` folder contains all the corresponding protein sequences (default postfix .pep) and cds sequences (default postfix .cds) of each species contained in phytree.nwk by fasta format.
 
 In addition, you can add the following optional parameters to make the program run faster and better (especially when using multi-core operation)::
--t T               Thread num.default:1
--o O               The output dir.default:output
--step STEP   which step you needs
--log LOG   log file name, or log will print on stdout
--config CONFIG     config.ini configuration file, leave it blank to run with
-                   default parameters and the program's own software
-                   version.
+-t T               Thread num.default:1.
+-o O               The output dir.default:output.
+-step STEP         which step you needs.
+-log LOG           log file name, or log will print on stdout.
+-config CONFIG     config.ini configuration file, leave it blank to run with default parameters and the program's own software version.
 -debug             The log file will contain the output of each software
                    itself, which is convenient for finding errors (-log is
-                   required)
+                   required).
 -only_script       Only generate scripts, not run automatically.
 -cds2tree          Use cds sequence to construct gene tree.
