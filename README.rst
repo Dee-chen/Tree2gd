@@ -156,5 +156,7 @@ So we used the config.ini file to summarize these settings, input it to the prog
    #The parameters used by tree2gd, in addition to the following default parameters, the user can add any parameter that tree2gd can recognize
    --bp=50
 
-
+Sample output plot show
+=================================
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/html_out_example.gif
+   :alt: Tree2gd kaks sample plot
