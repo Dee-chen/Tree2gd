@@ -160,5 +160,5 @@ Sample output plot show
 =================================
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/html_out_example.gif
    :alt: Tree2gd kaks sample plot
-.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Tree2GD.result.png
+.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Tree2GD.result_00.png
    :target: https://github.com/Dee-chen/Tree2gd/blob/master/Tree2GD.result.pdf
