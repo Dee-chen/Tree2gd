@@ -15,16 +15,17 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='Tree2gd',
-    version='1.0.33',
+    version='1.0.34',
     packages=['tree2gd','software','example_data'],
     license='GPL',
+    long_description_content_type='text/x-rst',
     long_description=long_description,
     author='Duoyuan chen',
-    author_email='371761145@qq.com',
+    author_email='18110700097@fudan.edu.cn',
     description='Tree2gd',
     py_modules=['tree2gd_main'],
     include_package_data=True,
-    url='https://github.com/Dee-chen/Fa2gd',
+    url='https://github.com/Dee-chen/Tree2gd',
     install_requires=[
         'configparser',
         'matplotlib',
@@ -34,7 +35,7 @@ setup(
         'bio'
     ],
     classifiers=[
-        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
         "License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)",
         "Operating System :: POSIX :: Linux",
     ],

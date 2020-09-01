@@ -20,30 +20,35 @@ implementations:
 
 - Python 3.6, 3.7, 3.8 -- see http://www.python.org
 
-- Pip3.6>=v19.2.3 -- see https://pypi.org/project/pip/
-Installing by ``sudo apt-get install python3-pip`` or with get-pip.py using::
+- Pip3.6>=v19.2.3 -- see https://pypi.org/project/pip
 
-   curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-   python3 get-pip.py
+Installing by ``sudo apt-get install python3-pip`` 
+or with get-pip.py using ::  
+
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+    python3 get-pip.py
 
 R Requirements
 ===================
-In order to complete the final drawing result display，We currently recommend using R>=v4.0.0
+In order to complete the final drawing result display,We currently recommend using R>=v4.0.0
 from https://www.r-project.org
 
 Installation
 ===================
 Installation From Pypi
--------------------
-You can quickly install Tree2gd through the following command, 
+-------------------------------------
+You can quickly install Tree2gd through the following command,
 and automatically install the python packages it depends on by run::
+
     pip3 install Tree2gd [--user]  #You may need the --user parameter if you do not have administrator rights
+
 If you need to use a specific python3 path to install and use Tree2gd, you can replace the above ``pip3`` with ``/THE/PATH/OF/YOUR/PYTHON3 -m pip``
 
 Installation From Source
--------------------
+------------------------------------
 You can download and decompress our source code, or fetch it using git.
 Now change directory to the Tree2gd source code folder and run::
+
     python3 setup.py build
     python3 setup.py test
     python3 setup.py install [--user] #You may need the --user parameter if you do not have administrator rights
@@ -54,28 +59,35 @@ Testing
 ===================
 After the installation is successful, the main program command ``Tree2gd`` and test command ``Tree2gd_test`` will be added to your system.
 You can first check whether Tree2gd is installed successfully by running the following command::
+
    $ Tree2gd -h
+
 If the system feeds back its corresponding parameter description, congratulations on the correct installation of Tree2gd to your system!
 Next, we **strongly recommend** that you run ``Tree2gd_test`` to use the data we have prepared for a quick and complete Tree2gd test, because you can get the following benefits:
-   1.Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).  
-   
-   2.When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.  
-   
+
+   1.Check whether the pre-compiled version of the software we use by default is suitable for your system, and replace the unavailable ones with the configuration file (see the following instructions for configuration).
+
+   2.When using for the first time, in the final drawing part, we will spend a few minutes to install several dependent packages in R. After that, the formal use will be faster and more convenient.
+
    3.After the user modifies the configuration file, you can add own new settings through the ``-config`` parameter of the command to test, and quickly detect that the new configuration can run successfully.
 
 The ``Tree2gd_test`` command will run the complete analysis process with the fastest parameter settings.
 It only contains two optional parameters command::
+
    $ Tree2gd_test [-t] [--config]
       -t [int] sets the number of threads for testing (default: 1)
       --config [str] uses the configuration given by the user File for testing (verify availability of custom configuration)
+
 In the case of 4 cpus, it takes about 5 minutes to complete a round of testing (the first run will take some extra time to download and install the R package). After successful operation,
-it will generate a folder in the current directory ``./Tree2gd_test_out``, You can check it (especially the final drawing result ``Tree2GD.result.pdf`` in step6) to fully verify the running effect of the software.
+it will generate a folder in the current directory``./Tree2gd_test_out``, You can check it (especially the final drawing result ``Tree2GD.result.pdf`` in step6) to fully verify the running effect of the software.
 
 Running
 ===================
-You can complete all WGD analysis only with the simplest commands below 
+You can complete all WGD analysis only with the simplest commands below
 and get a perfect drawing display::
+
     $ Tree2gd -i input_dir -tree phytree.nwk
+
 Among them, ``phytree.nwk`` is the species evolution tree in newick format.
 
 The ``input_dir`` folder contains all the corresponding protein sequences (default postfix .pep) and cds sequences (default postfix .cds) of each species contained in phytree.nwk by fasta format.
@@ -97,15 +109,16 @@ In addition, you can add the following optional parameters to make the program r
   --cds2tree           Use cds sequence to construct gene tree.
 
 
-Detailed parameter configuration file : config.ini 
-===================
-There are many softwares in the Tree2gd process. The pre-compiled versions of the programs are already used by default. At the same time, these softwares have many parameters that can be adjusted to achieve the best results.  
+Detailed parameter configuration file : config.ini
+=============================================================
+There are many softwares in the Tree2gd process. The pre-compiled versions of the programs are already used by default. At the same time, these softwares have many parameters that can be adjusted to achieve the best results.
 
-So we used the config.ini file to summarize these settings, input it to the program through the ``--config`` parameter, and call the configuration in the corresponding program.  
+So we used the config.ini file to summarize these settings, input it to the program through the ``-config`` parameter, and call the configuration in the corresponding program.
 
 **! note! Any item in this file is optional, users only need to add the lines they need in the corresponding section**
 ::
-   [software]  
+
+   [software]
    #The path of all software used by Tree2gd.If one is not set or set to empty,the program will use its own pre-compiled software version (location at /THE/PATH/OF/python/site-packages/software/)
    diamond =/THE/PATH/OF/python/site-packages/software/diamond
    muscle=/THE/PATH/OF/python/site-packages/software/muscle
@@ -130,16 +143,17 @@ So we used the config.ini file to summarize these settings, input it to the prog
    #The parameters used by phymcl, the user can add any parameter that phymcl can recognize
    [mcl2fasta]
    min_taxa=4 #The minimum number of species contained in each gene set when doing paper mulberry, cannot be less than 4, otherwise a meaningful tree cannot be built
-   [ParaAT]
-   #The parameters used by ParaAT.pl, in addition to the following default parameters, the user can add any parameter that ParaAT.pl can recognize
+   [ParaAT]#The parameters used by ParaAT.pl, in addition to the following default parameters, the user can add any parameter that ParaAT.pl can recognize
    -mod=YN
    -m=muscle #After the comparison software is selected this time, the corresponding software path should be given at x, if it does not match, an error will occur
    -g= #Remove aligned codons with gaps
    -t= #Remove mismatched codons
    [iqtree]
    #The parameters used by iqtree, in addition to the following default parameters, the user can add any parameter that iqtree can recognize
-   -bb=1000 #Ultrafast bootstrap (>=1000) If you don’t set it default to 1000, you can force it to 0 so that bootstrap is not performed, but it is not recommended except for testing
+   -bb=1000 #Ultrafast bootstrap (>=1000) If you do not set it default to 1000, you can force it to 0 so that bootstrap is not performed, but it is not recommended except for testing
    -m=JTT+G4 #If the -cds2tree parameter is added, it will default to HKY. Please specify DNA or Protein when defining the tree structure model
    [tree2gd]
    #The parameters used by tree2gd, in addition to the following default parameters, the user can add any parameter that tree2gd can recognize
    --bp=50
+
+
