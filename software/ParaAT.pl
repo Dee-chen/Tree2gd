@@ -253,8 +253,8 @@ if ($MSACMD eq "") { #not specify by user
 }
 else {
     print "$MSACMD";
-    if ( CheckCMD($MSACMD) == 0 ) {
-        print "[NA]\n$MSACMD is not accessible. Please make sure it is put into the global directory or specify its full path.\n";
+    if ( CheckCMD($alignCMD) == 0 ) {
+        print "[NA]\n$alignCMD is not accessible. Please make sure it is put into the global directory or specify its full path.\n";
         print "For help information: $0 -help.\n";
         exit(0);
     }
