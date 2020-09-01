@@ -158,7 +158,16 @@ So we used the config.ini file to summarize these settings, input it to the prog
 
 Sample output plot show
 =================================
-.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/html_out_example.gif
-   :alt: Tree2gd kaks sample plot
+
+Summary output plot
+------------------------
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Tree2GD.result_00.png
    :target: https://github.com/Dee-chen/Tree2gd/blob/master/Tree2GD.result.pdf
+Interactive html kaks plot
+------------------------
+.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/html_out_example.gif
+   :alt: Tree2gd kaks sample plot
+R kaks diagram
+------------------------
+.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Brapa.kaksks.R.result.png
+   
