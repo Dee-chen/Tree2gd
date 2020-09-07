@@ -198,22 +198,30 @@ step4.WGD
 -------------------------
 
 [Tree2GD](Made some modifications on the 2.4 version) https://tree2gd.sourceforge.io/
+
 [MUSCLE] Edgar, R. C. (2004). MUSCLE: multiple sequence alignment with high accuracy and high throughput. Nucleic Acids Research, 32(5), 1792–1797.
+
 [iqtree] B.Q. Minh, H.A. Schmidt, O. Chernomor, D. Schrempf, M.D. Woodhams, A. von Haeseler, R. Lanfear (2020) IQ-TREE 2: New models and efficient methods for phylogenetic inference in the genomic era. Mol. Biol. Evol., 37:1530-1534. https://doi.org/10.1093/molbev/msaa015
+
 [pal2nal.pl]  (v14; January 6, 2012)   Zhang Zhang (zhangzhang@big.ac.cn)
 
 step5.KaKs
 -------------------------
 
 [ParaAT](Made some modifications on the 2.0 version) Zhang, Z., Xiao, J., Wu, J., Zhang, H., Liu, G., Wang, X. and Dai, L. (2012) ParaAT: A parallel tool for constructing multiple protein-coding DNA alignments, Biochem Biophys Res Commun, 419(4):779-7
+
 *Select one of the following align software*
+
 [MUSCLE] Edgar, R. C. (2004). MUSCLE: multiple sequence alignment with high accuracy and high throughput. Nucleic Acids Research, 32(5), 1792–1797.
+
 [MAFFT] Katoh, K. and Standley, D. M. (2013). MAFFT multiple sequence alignment softwareversion 7: improvements in performance and usability. Molecular Biology and Evolution, 30(4), 772–780.
+
 [T-Coffee]  T-Coffee: A novel method for fast and accurate multiple sequence alignment.(2000 September 01) Journal of molecular biology 302 (1) :205-217 PMID: 10964570 
 
 step6.plot_summary
 -------------------------
 
 [ggtree](R package) G Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi: 10.1002/cpbi.96.
+
 [pyecharts](Python package)   https://pyecharts.org/
 
