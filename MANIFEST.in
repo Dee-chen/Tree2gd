@@ -1,3 +1,0 @@
-include *.ini
-recursive-include example_data *.pep *.cds *.tree *.ini
-recursive-include software *
