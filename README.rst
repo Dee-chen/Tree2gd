@@ -160,8 +160,7 @@ Summary output plot
 Interactive html kaks plot
 ------------------------
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/html_out_example.gif
-      :alt: Tree2gd kaks sample plot
-   :align: center
+      :align: center
 
 R kaks diagram
 ------------------------
