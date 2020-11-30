@@ -23,7 +23,7 @@ def run_kaks(sp_list,step1out,args,config,step4out,step5out,gene_pairs_idmap):
     Kaks_aligncmd=config.get("software", "muscle")
     Epal2nal=config.get("software", "Epal2nal")
     step5_sh.writelines([   "perl ParaAT.pl -kaks "+KaKs_Calculator+op+" -h "+os.sep.join([step5out,"all_gene_pairs.list"])
-                            +" -n "+os.sep.join([step5out,"all_cds.fa"])+" -a "+os.sep.join([step5out,'all_sample.pep.faa'])+" -p "+str(args.t)+" -k -f axt -o "+os.sep.join([step5out,"all_gene_pairs_kaks"])+"\n",
+                            +" -n "+os.sep.join([step5out,"all_cds.fa"])+" -a "+os.sep.join([step5out,'all_pep.fa'])+" -p "+str(args.t)+" -k -f axt -o "+os.sep.join([step5out,"all_gene_pairs_kaks"])+"\n",
                             "cd "+os.sep.join([step5out,"all_gene_pairs_kaks"])+"\n",
                             "for i in `ls *.axt`;do axt2one-line.py $i ${i}.one-line;done\n",
                             "ls *.one-line|while read id;do calculate_4DTV_correction.pl $id >${id%%one-line}4dtv;done\n"
