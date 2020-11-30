@@ -15,6 +15,10 @@ from Bio import Phylo
 from tree2gd.seq import read_fasta_file
 import re
 
+class NewConfigParser(configparser.ConfigParser):
+    def optionxform(self, optionstr):
+        return optionstr
+
 def err_exit():
     sys.exit('\033[1;31;47m!!The Tree2gd program exited abnormally, please check the log file !!\033[0m')
 
@@ -34,7 +38,7 @@ def cmd_check(cmd):
 
 def main():
     pwd= os.getcwd()
-    parser = argparse.ArgumentParser(description='Tree2GD:A pipeline for WGD V1.0.36')
+    parser = argparse.ArgumentParser(description='Tree2GD:A pipeline for WGD V1.0.37')
     parser.add_argument('-i', type=str, required=True, metavar='input_dir',help='The CDS and pep dir.')
     parser.add_argument('-tree', type=str, required=True, metavar='phytree.nwk',help='The phytree file.')
     parser.add_argument('-t', type=int,metavar='t',default='1', help='Thread num.default:1')
@@ -68,12 +72,11 @@ def main():
                     level=l.upper()
                     )
     home_dir=os.path.dirname(os.path.abspath(__file__))
-    cf=configparser.ConfigParser()
+    cf=NewConfigParser()
 
     if not args.config:
         logging.info('The user does not provide a configuration file, it will run with the default parameters and the software version of the program.')
         cf.add_section('software')
-        #cf.read(os.sep.join(home_dir,"config.ini")
     else:
         cf.read(args.config)
     if not cf.has_section('software'):
@@ -111,9 +114,6 @@ def main():
             logging.info("Need to perform kaks calculation or use cds for tree structure, start to check the correspondence between cds file %s and pep :"%(sp+cds_postfix))
             for s in read_fasta_file(os.sep.join([args.i,sp+cds_postfix])):
                 seqid,seq = s.name,s.seq
-                #if '.' in s.seq:
-                #    logging.error("The %s sequence of %s contains the character \".\", please replace it with the \"*\" character."%(seqid)%(sp+pep_postfix))
-                #    sys.exit('\033[1;31;47m!!The Tree2gd program exited abnormally, please check the log file !!\033[0m')
                 if s.name not in seqid_list:
                     logging.error("The %s sequence id in cdsfile:%s  does not have corresponding sequence in pep file."%(s.name,sp+cds_postfix))
                     err_exit()
@@ -150,14 +150,9 @@ def main():
         KaKs_Calculator=cf.get("software", "KaKs_Calculator") if cf.has_option("software", "KaKs_Calculator") and cf.get("software", "KaKs_Calculator")!="" else os.sep.join([home_dir,"tree2gd","software", "KaKs_Calculator"])
         cmd_check(KaKs_Calculator)
         cf.set("software", "KaKs_Calculator",KaKs_Calculator)
-        #ParaAT=cf.get("software", "ParaAT") if cf.has_option("software", "ParaAT") and cf.get("software", "ParaAT")!="" else os.sep.join([home_dir,"tree2gd","software", "ParaAT.pl"])
-        #cmd_check(ParaAT)
-        #cf.set("software", "ParaAT",ParaAT)
         muscle=cf.get("software", "muscle") if cf.has_option("software", "muscle") and cf.get("software", "muscle")!="" else os.sep.join([home_dir,"tree2gd","software", "muscle"])
         cmd_check([muscle,"-version"])
         cf.set("software", "muscle",muscle)
-        #Kaks_aligncmd=cf.get("software", "Kaks_aligncmd") if cf.has_option("software", "Kaks_aligncmd") and cf.get("software", "Kaks_aligncmd")!="" else os.sep.join([home_dir,"tree2gd","software", "muscle"])
-        #cf.set("software", "Kaks_aligncmd",Kaks_aligncmd)
         Epal2nal=cf.get("software", "Epal2nal") if cf.has_option("software", "Epal2nal") and cf.get("software", "Epal2nal")!="" else os.sep.join([home_dir,"tree2gd","software", "Epal2nal.pl"])
         cmd_check(Epal2nal)
         cf.set("software", "Epal2nal",Epal2nal)
@@ -231,8 +226,8 @@ def main():
         os.mkdir(step4out)
         if args.cds2tree:
             for i in sp_list:
-                src_path = os.sep.join([args.i,i+cds_postfix])
-                with open(src_path, 'r') as sf, open(os.sep.join([step1out,"all_cds.fa"]), 'a+') as df:
+                cds_path = os.sep.join([args.i,i+cds_postfix])
+                with open(cds_path, 'r') as sf, open(os.sep.join([step4out,"all_cds.fa"]), 'a+') as df:
                     lines=sf.readlines()
                     for line in lines:
                         df.write(line.strip().split(" ")[0]+"\n")
@@ -258,8 +253,8 @@ def main():
             for line in lines:
                 pep_out.write(line.strip().split(" ")[0]+"\n")
         for i in sp_list:
-            src_path = os.sep.join([args.i,i+cds_postfix])
-            with open(src_path, 'r') as sf, open(os.sep.join([step5out,"all_cds.fa"]), 'a+') as df:
+            cds_path = os.sep.join([args.i,i+cds_postfix])
+            with open(cds_path, 'r') as sf, open(os.sep.join([step5out,"all_cds.fa"]), 'a+') as df:
                 lines=sf.readlines()
                 for line in lines:
                     df.write(line.strip().split(" ")[0]+"\n")
@@ -270,7 +265,6 @@ def main():
                     gene_pairs_idmap.append([l.strip().split("\t")[2],l.strip().split("\t")[3],l.strip().split("\t")[4],l.strip().split("\t")[5]])
         from tree2gd.kaks import run_kaks
         run_kaks(sp_list,step1out,args,cf,step4out,step5out,gene_pairs_idmap)
-        #shutil.rmtree(os.sep.join([step5out,"all_gene_pairs_kaks"]))
 
     if '6' in args.step:
         step2out=os.sep.join([abs_out,'step2.MCL'])
