@@ -15,7 +15,7 @@ with open("README.rst", "r") as fh:
 
 setup(
     name='Tree2gd',
-    version='1.0.36',
+    version='1.0.37',
     packages=['tree2gd'],
     license='GPL',
     long_description_content_type='text/x-rst',
