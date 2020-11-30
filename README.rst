@@ -164,7 +164,7 @@ Interactive html kaks plot
 
 R kaks diagram
 ------------------------
-.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Dauc_caro.ks.R.result.pdf
+.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Dauc_caro.ks.R.result.png
 
    
 Software and Citation
