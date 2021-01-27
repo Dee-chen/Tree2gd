@@ -39,7 +39,7 @@ def run_kaks(sp_list,step1out,args,config,step4out,step5out,gene_pairs_idmap):
         logging.info("Start KaKs calculation.")
         pepmap={}
         cdsmap={}
-        logging.info("readfile")
+        logging.info("Readfile")
         for s in read_fasta_file(os.sep.join([step5out,'all_pep.fa'])):
                 pepmap[s.name]=s.seq
         for s in read_fasta_file(os.sep.join([step5out,'all_cds.fa'])):
@@ -48,15 +48,46 @@ def run_kaks(sp_list,step1out,args,config,step4out,step5out,gene_pairs_idmap):
             os.mkdir(os.sep.join([step5out,"sp_kaks_out"]))
         if not os.path.exists(os.sep.join([step5out,"all_gene_pairs_kaks"])):
             os.mkdir(os.sep.join([step5out,"all_gene_pairs_kaks"]))
-        logging.info("make dir")
+        logging.info("Make dir")
         os.chdir(os.sep.join([step5out,"all_gene_pairs_kaks"]))
-        sh_pool=Pool(args.t)
+        logging.info("Start gene pairs kaks calculation.")
+        a=0
+        pairs_num=len(gene_pairs_idmap)
+        b=pairs_num//20
+        arg_list=[]
+
         for pair in gene_pairs_idmap:
-            sh_pool.apply_async(sub_sh,args=(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op),callback=write_result)
+            tmp=(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op)
+            arg_list.append(tmp)
+        sh_pool=Pool(args.t)
+        sh_pool.map(run_ks,arg_list)
+            #a=a+1
+            #sh_pool.apply_async(sub_sh,args=(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op),callback=write_result)
+            #if(a%b==0):
+            #    logging.info("%s \%(%s pairs) completed."%((a//b)*5)%(a))
         sh_pool.close()
         sh_pool.join()
+        logging.info("Gene pairs kaks calculation finish.")
+        logging.info("Start summarize the Ks results of each species.")
+        for pair in gene_pairs_idmap:
+            out=sum_Ks(pair)
+            write_result(out)
+            a=a+1
+            if(a%b==0):
+                logging.info("%d %% (%d pairs) completed."%((a//b)*5,a))
+
         logging.info("ALL step5 kaks has done.")
 
+def run_ks(args):
+    sub_sh(args[0],args[1],args[2],args[3],args[4],args[5],args[6])
+
+def sum_Ks(pair):
+    out=[]
+    with open(pair[2]+"-"+pair[3]+".cds_aln.axt.kaks") as kaks_file,open(pair[2]+"-"+pair[3]+".4dtv") as DTV_file:
+        kaks=kaks_file.readlines()[1].split("\t")
+        dtv=DTV_file.readlines()[1].split("\t")
+        out=[pair[1],pair[0],pair[2],pair[3],kaks[2],kaks[3],kaks[4],dtv[1]]
+    return out
 
 def sub_sh(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op):
     out=[]
@@ -82,11 +113,7 @@ def sub_sh(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op):
     kaks_stdout=subprocess.run(KaKs_Calculator+op+" -i "+pair[2]+"-"+pair[3]+".cds_aln.axt -o  "+pair[2]+"-"+pair[3]+".cds_aln.axt.kaks >> msg.kaks",shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     axt2oneline((pair[2]+"-"+pair[3]+".cds_aln.axt"),(pair[2]+"-"+pair[3]+".one-line"))
     stdout=subprocess.run("perl "+os.sep.join([home_dir,"software","calculate_4DTV_correction.pl"])+" "+pair[2]+"-"+pair[3]+".one-line"+" > "+pair[2]+"-"+pair[3]+".4dtv",shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
-    with open(pair[2]+"-"+pair[3]+".cds_aln.axt.kaks") as kaks_file,open(pair[2]+"-"+pair[3]+".4dtv") as DTV_file:
-        kaks=kaks_file.readlines()[1].split("\t")
-        dtv=DTV_file.readlines()[1].split("\t")
-        out=[pair[1],pair[0],pair[2],pair[3],kaks[2],kaks[3],kaks[4],dtv[1]]
-    return out
+
 
 def write_result(input):
     with open(os.sep.join(["..","sp_kaks_out",input[0]+".kaks_4dtv.result"]),"a+") as out:
