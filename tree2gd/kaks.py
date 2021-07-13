@@ -140,7 +140,7 @@ def axt2oneline(reader,out):#copyed
     writer = open(out,"w")
     with open(reader) as fh:
             for line in fh:
-                    if re.search(r"\d+",line):
+                    if re.search("-",line):
                         header = line.strip()
                         mydict[header] = []
                     else:
