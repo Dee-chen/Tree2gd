@@ -85,8 +85,12 @@ def sum_Ks(pair):
     out=[]
     with open(pair[2]+"-"+pair[3]+".cds_aln.axt.kaks") as kaks_file,open(pair[2]+"-"+pair[3]+".4dtv") as DTV_file:
         kaks=kaks_file.readlines()[1].split("\t")
-        dtv=DTV_file.readlines()[1].split("\t")
-        out=[pair[1],pair[0],pair[2],pair[3],kaks[2],kaks[3],kaks[4],dtv[1]]
+        line=DTV_file.readlines()
+        if len(line)>1:
+            dtv=line[1].split("\t")
+        else:
+            dtv=["0","NA"]
+    out=[pair[1],pair[0],pair[2],pair[3],kaks[2],kaks[3],kaks[4],dtv[1]]
     return out
 
 def sub_sh(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op):
