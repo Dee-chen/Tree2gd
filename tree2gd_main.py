@@ -38,7 +38,7 @@ def cmd_check(cmd):
 
 def main():
     pwd= os.getcwd()
-    parser = argparse.ArgumentParser(description='Tree2GD:A pipeline for WGD V1.0.38')
+    parser = argparse.ArgumentParser(description='Tree2GD:A pipeline for WGD V1.0.40')
     parser.add_argument('-i', type=str, required=True, metavar='input_dir',help='The CDS and pep dir.')
     parser.add_argument('-tree', type=str, required=True, metavar='phytree.nwk',help='The phytree file.')
     parser.add_argument('-t', type=int,metavar='t',default='1', help='Thread num.default:1')
