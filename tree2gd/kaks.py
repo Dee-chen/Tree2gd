@@ -70,11 +70,13 @@ def run_kaks(sp_list,step1out,args,config,step4out,step5out,gene_pairs_idmap):
         logging.info("Gene pairs kaks calculation finish.")
         logging.info("Start summarize the Ks results of each species.")
         for pair in gene_pairs_idmap:
-            out=sum_Ks(pair)
-            write_result(out)
-            a=a+1
-            if(a%b==0):
-                logging.info("%d %% (%d pairs) completed."%((a//b)*5,a))
+            if os.path.exists(pair[2]+"-"+pair[3]+".cds_aln.axt.kaks"):
+                if os.path.getsize(pair[2] + "-" + pair[3] + ".cds_aln.axt.kaks"):
+                    out=sum_Ks(pair)
+                    write_result(out)
+                    a=a+1
+                    if(a%b==0):
+                        logging.info("%d %% (%d pairs) completed."%((a//b)*5,a))
 
         logging.info("ALL step5 kaks has done.")
 
@@ -113,10 +115,15 @@ def sub_sh(pair,pepmap,cdsmap,KaKs_Calculator,Kaks_aligncmd,Epal2nal,op):
         pass
     stdout=subprocess.run(Kaks_aligncmd+" -quiet  -in "+pair[2]+"-"+pair[3]+".pep  -out "+pair[2]+"-"+pair[3]+".pep_aln >> msg.msa",shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
     Epal2nal_stdout=subprocess.run(Epal2nal+" "+pair[2]+"-"+pair[3]+".pep_aln "+pair[2]+"-"+pair[3]+".cds -output fasta -nogap -nomismatch > "+pair[2]+"-"+pair[3]+".cds_aln",shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    Fasta2AXT(pair[2]+"-"+pair[3]+".cds_aln",pair[2]+"-"+pair[3]+".cds_aln.axt")
-    kaks_stdout=subprocess.run(KaKs_Calculator+op+" -i "+pair[2]+"-"+pair[3]+".cds_aln.axt -o  "+pair[2]+"-"+pair[3]+".cds_aln.axt.kaks >> msg.kaks",shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    axt2oneline((pair[2]+"-"+pair[3]+".cds_aln.axt"),(pair[2]+"-"+pair[3]+".one-line"))
-    stdout=subprocess.run("perl "+os.sep.join([home_dir,"software","calculate_4DTV_correction.pl"])+" "+pair[2]+"-"+pair[3]+".one-line"+" > "+pair[2]+"-"+pair[3]+".4dtv",shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+    if not os.path.getsize(pair[2]+"-"+pair[3]+".cds_aln"):
+        logging.warn(pair[2]+"-"+pair[3]+".cds_aln is empty,Processing of this gene pair has been skipped, please check for special characters in the protein sequence")
+        pass
+    else:
+        trimal_stdout=subprocess.run("trimal -in "+pair[2]+"-"+pair[3]+".cds_aln -out "+pair[2]+"-"+pair[3]+".filted.cds_aln -automated1 -resoverlap 0.7 -seqoverlap 75",shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        Fasta2AXT(pair[2]+"-"+pair[3]+".filted.cds_aln",pair[2]+"-"+pair[3]+".cds_aln.axt")
+        kaks_stdout=subprocess.run(KaKs_Calculator+op+" -i "+pair[2]+"-"+pair[3]+".cds_aln.axt -o  "+pair[2]+"-"+pair[3]+".cds_aln.axt.kaks >> msg.kaks",shell=True,stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        axt2oneline((pair[2]+"-"+pair[3]+".cds_aln.axt"),(pair[2]+"-"+pair[3]+".one-line"))
+        stdout=subprocess.run("perl "+os.sep.join([home_dir,"software","calculate_4DTV_correction.pl"])+" "+pair[2]+"-"+pair[3]+".one-line"+" > "+pair[2]+"-"+pair[3]+".4dtv",shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
 
 
 def write_result(input):
