@@ -202,7 +202,12 @@ step5.KaKs
 
 [MUSCLE] Edgar, R. C. (2004). MUSCLE: multiple sequence alignment with high accuracy and high throughput. Nucleic Acids Research, 32(5), 1792–1797.
 
-step6.plot_summary
+step6.Synteny
+-------------------------
+[jcvi] Tang H ,  Krishnakumar V ,  Li J . jcvi: JCVI utility libraries[J].  2015.
+[MCscan] Tang H ,  Bowers J E ,  Wang X , et al. Synteny and Collinearity in Plant Genomes[J]. Science, 2008, 320(5875):p.486-488.
+
+step7.plot_summary
 -------------------------
 
 [ggtree](R package) G Yu. Using ggtree to visualize data on tree-like structures. Current Protocols in Bioinformatics, 2020, 69:e96. doi: 10.1002/cpbi.96.
