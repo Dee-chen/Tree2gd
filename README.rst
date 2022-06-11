@@ -107,6 +107,7 @@ In addition, you can add the following optional parameters to make the program r
                        required)
   --only_script        Only generate scripts, not run automatically.
   --cds2tree           Use cds sequence to construct gene tree.
+  --synteny            Using the results of the covariance analysis, the GD ratio and Ks distribution were optimized. **Gene annotations information for each species need to be provided in the input folder as *.bed files
 
 
 Detailed parameter configuration file : config.ini
