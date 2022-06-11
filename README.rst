@@ -166,6 +166,7 @@ R kaks diagram
 ------------------------
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/Dauc_caro.ks.R.result.png
 
+
 WGD identification by support vector machine (SVM) model   
 ------------------------
 .. image:: https://github.com/Dee-chen/Tree2gd/blob/master/SVM_sample_01.jpg
