@@ -169,7 +169,7 @@ R kaks diagram
 
 WGD identification by support vector machine (SVM) model   
 ------------------------
-![] (https://github.com/Dee-chen/Tree2gd/blob/master/SVM_sample_01.jpg)
+.. image:: https://github.com/Dee-chen/Tree2gd/blob/master/SVM_sample_01.jpg
 
 Software and Citation
 ==================================
