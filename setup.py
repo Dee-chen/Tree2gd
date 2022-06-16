@@ -32,7 +32,8 @@ setup(
         'argparse',
         'coloredlogs',
         'pyecharts',
-        'bio'
+        'bio',
+        'jcvi'
     ],
     classifiers=[
         "Programming Language :: Python :: 3.6",
