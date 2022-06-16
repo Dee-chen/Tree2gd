@@ -25,7 +25,7 @@ def synteny(sp_list,config,out,diamond,seqkit,pep_postfix,args):
         op=' '.join((op,' '.join((k,v))))
     for i in sp_list:
         SH = open(os.sep.join([out,'sample_sh',i+".sh"]),"w")
-        SH.write('python -m '+jcvi+' ortholog --no_strip_names --cscore=.99 '+os.sep.join([args.i,i])+" "+os.sep.join([args.i,i])+"\n")
+        SH.write('python -m jcvi.compara.catalog ortholog --no_strip_names --cscore=.99 '+os.sep.join([args.i,i])+" "+os.sep.join([args.i,i])+"\n")
         SH.close()
         sh_list.append(os.sep.join([out,'sample_sh',i+".sh"]))
 
