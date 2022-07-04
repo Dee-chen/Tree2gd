@@ -16,6 +16,40 @@ from pyecharts.faker import Faker
 def run_plot(step6out,args,cf):
     logging.info("Start step6 summary plot...")
     os.chdir(step6out)
+    if args.synteny:
+        logging.info("Writing synteny script files...")
+        sp_num = len(sp_list)
+        op = ''
+        sh_list = []
+        step6_sh = open(os.sep.join([out, 'step6.sh']), "w")
+        for k, v in options:
+            op = ' '.join((op, ' '.join((k, v))))
+        for i in sp_list:
+            SH = open(os.sep.join([out, 'sample_sh', i + ".sh"]), "w")
+            SH.write('python -m jcvi.compara.catalog ortholog --no_strip_names --cscore=.99 ' + os.sep.join(
+                [args.i, i]) + " " + os.sep.join([args.i, i]) + "\n")
+            SH.close()
+            sh_list.append(os.sep.join([out, 'sample_sh', i + ".sh"]))
+
+        if not args.only_script:
+            try:
+                subprocess.run('python -m jcvi.compara.catalog', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+            except FileNotFoundError:
+                logging.error("jcvi can not run.")
+                sys.exit(0)
+
+            sh_pool = Pool(int(p))
+            sh_pool.map(sub_sh, sh_list)
+            sh_pool.close()
+            sh_pool.join()
+            logging.info("ALL synteny  has done.")
+            logging.info("Start sorting results..")
+            stdout = subprocess.run(['sh', os.sep.join([out, 'summary.sh'])], stdout=subprocess.PIPE,
+                                    stderr=subprocess.PIPE)
+
+        step6_sh.writelines("\n".join(sh_list))
+        step6_sh.write(os.sep.join([out, 'summary.sh']))
+        step6_sh.close()
     if not args.only_script:
         stdout=subprocess.run('Rscript '+'Tree2GD_draw.R',shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
         logging.info("R plot done.")
