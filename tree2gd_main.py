@@ -49,6 +49,7 @@ def main():
     parser.add_argument('--debug', action='store_true', default=False, help='The log file will contain the output of each software itself, which is convenient for finding errors (-log is required)')
     parser.add_argument('--only_script', action='store_true', default=False,help='Only generate scripts, not run automatically.')
     parser.add_argument('--cds2tree', action='store_true', default=False,help='Use cds sequence to construct gene tree.')
+    parser.add_argument('--synteny', action='store_true', default=False,help='	Using the results of the covariance analysis, the GD ratio and Ks distribution were optimized. **Gene annotations information for each species need to be provided in the input folder as *.bed files')
     args = parser.parse_args()
 
     if not args.log:
@@ -287,6 +288,8 @@ def main():
         shutil.copyfile(os.sep.join([step4out,"Tree2GD_out","summarytable.txt"]),os.sep.join([step6out,"Tree2GD_out","summarytable.txt"]))
         shutil.copytree(os.sep.join([step5out,"sp_kaks_out"]),os.sep.join([step6out,"sp_kaks_out"]))
         shutil.copyfile(os.sep.join([home_dir,"tree2gd","software","Tree2GD_draw.R"]),os.sep.join([step6out,"Tree2GD_draw.R"]))
+        shutil.copyfile(os.sep.join([home_dir, "SVM.R"]),
+                        os.sep.join([step6out, "SVM.R"]))
         from tree2gd.plot import run_plot
         run_plot(step6out,args,cf)
         os.remove(os.sep.join([step6out,"Rplots.pdf"]))
