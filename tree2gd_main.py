@@ -288,7 +288,7 @@ def main():
         shutil.copyfile(os.sep.join([step4out,"Tree2GD_out","summarytable.txt"]),os.sep.join([step6out,"Tree2GD_out","summarytable.txt"]))
         shutil.copytree(os.sep.join([step5out,"sp_kaks_out"]),os.sep.join([step6out,"sp_kaks_out"]))
         shutil.copyfile(os.sep.join([home_dir,"tree2gd","software","Tree2GD_draw.R"]),os.sep.join([step6out,"Tree2GD_draw.R"]))
-        shutil.copyfile(os.sep.join([home_dir, "SVM.R"]),
+        shutil.copyfile(os.sep.join([home_dir,"tree2gd","software", "SVM.R"]),
                         os.sep.join([step6out, "SVM.R"]))
         from tree2gd.plot import run_plot
         run_plot(step6out,args,cf)
