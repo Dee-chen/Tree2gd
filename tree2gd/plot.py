@@ -65,6 +65,10 @@ def run_plot(step6out,args,cf):
         sh_pool.map(html_plot,file_names)
         sh_pool.close()
         sh_pool.join()
+        stdout=subprocess.run('Rscript '+'SVM.R',shell=True,stdout=subprocess.PIPE,stderr=subprocess.PIPE)
+        logging.info("SVM plot done.")
+        logging.debug('{} stdout:\n'.format("SVM.R") +stdout.stdout.decode('utf-8'))
+        logging.debug('{} stderr:\n'.format("SVM.R") +stdout.stderr.decode('utf-8'))
         logging.info("ALL step6 plot has done.")
 
 def html_plot(file):
