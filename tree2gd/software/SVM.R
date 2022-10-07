@@ -1,3 +1,11 @@
+options(repos=structure(c(CRAN="https://mirrors.tuna.tsinghua.edu.cn/CRAN/")))
+options(repos=structure(c(CRAN="http://cran.us.r-project.org")))
+if (!requireNamespace("BiocManager", quietly = TRUE))
+  install.packages("BiocManager")
+if (!requireNamespace("e1071", quietly = TRUE)) BiocManager::install("e1071")
+if (!requireNamespace("ggplot2", quietly = TRUE)) BiocManager::install("ggplot2")
+if (!requireNamespace("dplyr", quietly = TRUE)) BiocManager::install("dplyr")
+
 library(e1071)
 library(dplyr)
 library(ggplot2)
